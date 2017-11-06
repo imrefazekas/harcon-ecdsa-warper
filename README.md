@@ -20,4 +20,4 @@ let harcon = new Harcon( {
 
 That will inject the [Harcon-ecdsa-warper](https://github.com/imrefazekas/harcon-ecdsa-warper) entity into the [harcon](https://github.com/imrefazekas/harcon) to sign all outgoing messages and validate all incoming ones using the strong [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) algorithm.
 
-Such security measurement is desired in a distributed environment facilitated by a proper transport layer ("Barrel") solution, like [harcon-amqp](https://github.com/imrefazekas/harcon-amqp).
+Such security measurement is desired in a distributed environment facilitated by a proper transport layer ("Barrel") solution, like [harcon-amqp](https://github.com/imrefazekas/harcon-amqp) or [harcon-nats](https://github.com/imrefazekas/harcon-nats).

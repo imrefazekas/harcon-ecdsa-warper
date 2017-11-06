@@ -8,7 +8,8 @@ let path = require('path')
 
 // Requires harcon. In your app the form 'require('harcon')' should be used
 let Harcon = require('harcon')
-let Amqp = require('harcon-amqp')
+// let Amqp = require('harcon-amqp')
+let Nats = require('harcon-nats')
 
 let fs = require('fs')
 let { promisify } = require('util')
@@ -43,9 +44,11 @@ describe('harcon', function () {
 
 			let harcon = new Harcon( {
 				name: harconName,
-				Barrel: Amqp.Barrel,
+				// Barrel: Amqp.Barrel,
+				Barrel: Nats.Barrel,
 				logger: logger, idLength: 32,
-				barrel: { Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
+				// barrel: { Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
+				barrel: { 'url': 'nats://localhost:4222', Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
 				blower: { commTimeout: 1500, tolerates: ['Alizee.flegme'] },
 				mortar: { enabled: true, folder: path.join( harconPath, 'entities' ), liveReload: true, liveReloadTimeout: 2000 },
 				Marie: {greetings: 'Hi!'}
@@ -78,7 +81,7 @@ describe('harcon', function () {
 		it('Retrieve entities...', async function () {
 			let entities = await inflicter.entities( )
 			let names = entities.map( function (entity) { return entity.name } ).sort()
-			expect( names ).to.eql( [ 'Alizee', 'Bandit', 'Charlotte', 'Claire', 'Domina', 'Inflicter', 'Julie', 'Lina', 'Margot', 'Marie', 'Marion', 'Mortar', 'peter', 'walter' ] )
+			expect( names ).to.eql( [ 'Alizee', 'Bandit', 'Boss', 'Charlotte', 'Claire', 'Domina', 'Inflicter', 'Julie', 'Lina', 'Margot', 'Marie', 'Marion', 'Mortar', 'peter', 'walter' ] )
 		})
 		it('Send for divisions...', async function () {
 			let res = await inflicter.ignite( clerobee.generate(), null, '', 'Inflicter.divisions')
