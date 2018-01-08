@@ -9,6 +9,7 @@ let path = require('path')
 // Requires harcon. In your app the form 'require('harcon')' should be used
 let Harcon = require('harcon')
 let Amqp = require('harcon-amqp')
+// let Nats = require('harcon-nats')
 
 let fs = require('fs')
 let { promisify } = require('util')
@@ -26,6 +27,8 @@ process.on('unhandledRejection', (reason, p) => {
 	console.log('Unhandled Rejection at: Promise', p, ' .... reason:', reason)
 })
 
+let Warper = require('../lib/Warper')
+
 let harconName = 'HarconSys'
 describe('harcon', function () {
 	let inflicter
@@ -41,8 +44,11 @@ describe('harcon', function () {
 
 			let harcon = new Harcon( {
 				name: harconName,
-				// Barrel: Amqp.Barrel,
+				Barrel: Amqp.Barrel,
+				// Barrel: Nats.Barrel,
 				logger: logger, idLength: 32,
+				barrel: { Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
+				// barrel: { 'url': 'nats://localhost:4222', Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
 				blower: { commTimeout: 1500, tolerates: ['Alizee.flegme'] },
 				mortar: { enabled: true, folder: path.join( harconPath, 'entities' ), liveReload: true, liveReloadTimeout: 2000 },
 				Marie: {greetings: 'Hi!'}
