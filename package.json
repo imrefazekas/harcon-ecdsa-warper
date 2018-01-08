@@ -1,6 +1,6 @@
 {
   "name": "harcon-ecdsa-warper",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "ECDSA-based warper entity for harcon for inter-service security",
   "keywords": [
     "ECDSA",
@@ -29,8 +29,8 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "harcon-amqp": "^8.4.11",
-    "harcon-nats": "^1.0.10",
-    "pino": "^4.10.2"
+    "harcon-nats": "^1.0.11",
+    "pino": "^4.10.3"
   },
   "engines": {
     "node": ">= 8.0.0"
