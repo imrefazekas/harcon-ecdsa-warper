@@ -8,8 +8,8 @@ let path = require('path')
 
 // Requires harcon. In your app the form 'require('harcon')' should be used
 let Harcon = require('harcon')
-let Amqp = require('harcon-amqp')
-// let Nats = require('harcon-nats')
+// let Amqp = require('harcon-amqp')
+let Nats = require('harcon-nats')
 
 let fs = require('fs')
 let { promisify } = require('util')
@@ -31,7 +31,7 @@ let Warper = require('../lib/Warper')
 
 let harconName = 'HarconSys'
 describe('harcon', function () {
-	let inflicter
+	let inflicter, loadCount = 100
 
 	before( async function () {
 		this.timeout(5000)
@@ -44,11 +44,11 @@ describe('harcon', function () {
 
 			let harcon = new Harcon( {
 				name: harconName,
-				Barrel: Amqp.Barrel,
-				// Barrel: Nats.Barrel,
+				// Barrel: Amqp.Barrel,
+				Barrel: Nats.Barrel,
 				logger: logger, idLength: 32,
-				barrel: { Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
-				// barrel: { 'url': 'nats://localhost:4222', Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
+				// barrel: { Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
+				barrel: { 'url': 'nats://localhost:4222', Warper: Warper, warper: { message: Buffer.from( clerobee.generate( 32 ), 'utf8' ).toString('hex') } },
 				blower: { commTimeout: 1500, tolerates: ['Alizee.flegme'] },
 				mortar: { enabled: true, folder: path.join( harconPath, 'entities' ), liveReload: true, liveReloadTimeout: 2000 },
 				Marie: {greetings: 'Hi!'}
@@ -98,7 +98,7 @@ describe('harcon', function () {
 			expect( res ).to.eql( [ 'Hi there!', 'My pleasure!' ] )
 		})
 	})
-
+	/*
 	describe('simple messages', function () {
 		it('Alize dormir', async function () {
 			let res = await inflicter.ignite( clerobee.generate(), null, '', 'Alizee.dormir' )
@@ -168,7 +168,28 @@ describe('harcon', function () {
 			} catch ( err ) { console.error(err) }
 		})
 	})
-
+	*/
+	describe('Load', function () {
+		it('Marion', function ( done ) {
+			let ps = [], timer = Date.now()
+			for (let i = 0; i < loadCount; ++i)
+				ps.push( new Promise( async (resolve, reject) => {
+					try {
+						let res = await inflicter.simpleIgnite( 'Marion.force' )
+						resolve( res )
+					} catch (err) { reject(err) }
+				} ) )
+			Promise.all( ps )
+				.then( (res) => {
+					console.log( 'Execution time: ' + (Date.now() - timer) + 'ms' )
+					done()
+				} )
+				.catch( ( err ) => {
+					done( err )
+				} )
+		} )
+	} )
+	/*
 	describe('Erupt flow', function () {
 		it('Simple greetings by name is', async function () {
 			try {
@@ -308,7 +329,7 @@ describe('harcon', function () {
 			} catch (err) { console.error(err) }
 		})
 	})
-
+	*/
 	after(async function () {
 		if (inflicter)
 			await inflicter.close( )
