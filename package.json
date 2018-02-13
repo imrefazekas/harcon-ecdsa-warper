@@ -1,6 +1,6 @@
 {
   "name": "harcon-ecdsa-warper",
-  "version": "1.1.12",
+  "version": "1.1.15",
   "description": "ECDSA-based warper entity for harcon for inter-service security",
   "keywords": [
     "ECDSA",
@@ -23,16 +23,16 @@
   "license": "MIT",
   "main": "./lib/Warper.js",
   "dependencies": {
-    "harcon": "^8.5.12",
-    "secp256k1": "^3.4.0"
+    "harcon": "^8.5.15",
+    "secp256k1": "^3.5.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "clerobee": "^0.9.0",
-    "harcon-amqp": "^8.5.12",
-    "harcon-nats": "^1.1.12",
+    "harcon-amqp": "^8.5.15",
+    "harcon-nats": "^1.1.15",
     "mkdirp": "^0.5.1",
-    "pino": "^4.10.3",
+    "pino": "^4.10.4",
     "proback.js": "^2.1.5"
   },
   "engines": {
