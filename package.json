@@ -23,16 +23,16 @@
   "license": "MIT",
   "main": "./lib/Warper.js",
   "dependencies": {
-    "harcon": "^8.8.0",
+    "harcon": "^8.8.1",
     "secp256k1": "^3.5.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "clerobee": "^0.9.6",
-    "harcon-amqp": "^8.8.0",
-    "harcon-nats": "^1.4.0",
+    "harcon-amqp": "^8.8.1",
+    "harcon-nats": "^1.4.1",
     "mkdirp": "^0.5.1",
-    "pino": "^4.15.0",
+    "pino": "^4.16.0",
     "proback.js": "^2.1.6"
   },
   "engines": {
