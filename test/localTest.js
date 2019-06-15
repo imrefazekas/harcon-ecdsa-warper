@@ -1,9 +1,7 @@
 const {
 	randomBytes
 } = require('crypto')
-const secp256k1 = require('secp256k1')
-// or require('secp256k1/elliptic')
-//   if you want to use pure js implementation in node
+const secp256k1 = require('@nlv8/signun')
 
 // generate message to sign
 const msg = randomBytes(32)
