@@ -23,14 +23,14 @@
   "license": "MIT",
   "main": "./lib/Warper.js",
   "dependencies": {
-    "harcon": "^9.2.22",
+    "harcon": "^9.2.23",
     "@nlv8/signun": "^1.3.5"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "clerobee": "^1.0.0",
-    "harcon-amqp": "^9.2.12",
-    "harcon-nats": "^2.2.13",
+    "harcon-amqp": "^9.2.14",
+    "harcon-nats": "^2.2.14",
     "mkdirp": "^0.5.1",
     "pino": "~5",
     "pino-pretty": "~3",
