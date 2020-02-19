@@ -29,8 +29,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "clerobee": "^1.0.1",
-    "harcon-amqp": "^9.2.16",
-    "harcon-nats": "^2.2.16",
+    "harcon-amqp": "^9.2.17",
+    "harcon-nats": "^2.2.17",
     "mkdirp": "^1.0.3",
     "pino": "~5",
     "pino-pretty": "~3",
