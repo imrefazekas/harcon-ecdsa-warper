@@ -1,6 +1,6 @@
 {
   "name": "harcon-ecdsa-warper",
-  "version": "2.2.17",
+  "version": "2.2.18",
   "description": "ECDSA-based warper entity for harcon for inter-service security",
   "keywords": [
     "ECDSA",
