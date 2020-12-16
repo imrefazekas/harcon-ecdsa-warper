@@ -24,7 +24,7 @@
   "main": "./lib/Warper.js",
   "dependencies": {
     "harcon": "^9.2.48",
-    "@nlv8/signun": "^1.4.3"
+    "@nlv8/signun": "2.0.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
